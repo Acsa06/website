@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Acsa.Gz</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> 
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+
+    /* Contenedor del Preloader */
+    body {
+            margin: 0;
+            background-color: #f4f4f4; 
+            transition: background-color 1.5s ease-out; 
+        }
+
+        #preloader {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background-color: rgba(204, 207, 212, 0.95); /* Color de fondo del preloader */
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1.5s ease-out, visibility 1.5s ease-out; 
+        }
+
+        /* Preloader giratorio */
+        .preloader {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(90deg, rgba(59, 76, 110, 0.8) 0%, rgba(59, 76, 110, 0.8)  35%, rgba(211, 209, 207, 0.8) 100%);
+            border-radius: 50%;
+            animation: girarb 1s linear infinite;
+            position: relative;
+            z-index: 5; /* Mantiene el círculo detrás de la imagen */
+        }
+
+        /* Imagen de Logo en el Centro */
+        .image {
+            width: 210px;
+            height: auto;
+            position: absolute;
+            z-index: 10; /* Mantiene la imagen encima del preloader */
+        }
+
+        /* Animación de rotación */
+        @keyframes girarb {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Ocultar preloader */
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .navbar {
+            padding: 0.25rem 0; 
+            height: 70px; /* Altura de la barra de navegación */
+        }
+
+        .navbar-brand img {
+            height: 60px; /* Altura del logo */
+            width: auto; 
+        }
+
+        .navbar-brand,
+        .nav-link {
+            height: 100%;
+            display: flex;
+            align-items: center; /* Centra en vertical el contenido */
+        }
+
+        /* Estilo para las imágenes en la sección Formación */
+.img-timeline {
+    height: 250px; /* Altura fija para todas las imágenes */
+    object-fit: cover; 
+    transition: transform 0.3s ease; /* Transición suave al desplazarse */
+}
+
+.img-timeline:hover {
+    transform: scale(1.05); /* Efecto de aumento al pasar el cursor */
+}
+
+.card {
+    height: 100%; /* Permite que las tarjetas tengan la misma altura */
+    width: 100%;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido en vertical */
+    align-items: center; /* Centra el contenido en horizontal */
+    height: 100%; 
+}
+
+/* Estilo del modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo del contenido del modal */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    width: 24%; /* Aqui ajuste el tamaño de las imagenes dentro de los cuadros qe salen al hacer clik*/
+    height: auto;
+    max-width: 600px; 
+    margin: auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Espacio entre las imágenes */
+}
+
+/* Cerrar modal */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-images {
+    display: flex;
+    flex-direction: column; 
+}
+
+.modal-images img {
+    width: 30%; /* Ancho de las imágenes en el modal */
+    height: auto;
+    margin: 5px; /* Espacio entre las imágenes */
+    transition: transform 0.2s;
+}
+
+.modal-images img:hover {
+    transform: scale(1.1); /* Efecto al pasar sobre la imagen */
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem; /* Ajusta el margen inferior */
+}
+
+.img-fluid {
+    transition: transform 0.3s ease; /* Suave transición */
+}
+
+.img-fluid:hover {
+    transform: scale(1.05); /* Aumenta un 5% al pasar el cursor */
+}
+
+    /* Estilos para el borde de las imágenes */
+.bordered-image {
+    border: 5px solid #d8a084; /* Color del borde */
+    border-radius: 10px; 
+    transition: transform 0.3s, box-shadow 0.3s; /* Transición suave */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+.bordered-image:hover {
+    transform: scale(1.1); /* Efecto de aumento al pasar el mouse */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); 
+}
+
+.border-effect {
+    border: 2px solid transparent; /* Borde por defecto */
+    transition: border-color 0.3s; 
+}
+
+.border-effect:hover {
+    border-color: #d8a084; /* Cambia el color del borde al pasar el mouse */
+}
+
+/* Estilos para el texto */
+.text-content {
+    font-family: 'Arial', sans-serif; 
+    color: #333; /* Color del texto */
+}
+
+/* Estilos para el modal */
+.image-modal {
+    display: none; /* Por defecto oculto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%; /* Ajustado al 100% para cubrir toda la pantalla */
+    height: 100%; /* Ajustado al 100% para cubrir toda la pantalla */
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%; /* Asegura que la imagen no desborde */
+    max-height: 90%; /* Asegura que la imagen no desborde */
+    border-radius: 10px; /* Bordes redondeados para la imagen del modal */
+}
+
+#caption {
+    text-align: center;
+    color: #ffffff; /* Color del texto de la descripción */
+    padding: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: rgba(99, 92, 92, 0.76);
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Contenedor principal ajustado */
+.adopt-a-tree-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f8ff; /* Color de fondo suave */
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra */
+    max-width: 700px; /* Reducción del ancho máximo */
+    margin: 0 auto; /* Centrando horizontalmente */
+}
+
+/* Tarjeta de adopción */
+.adopt-a-tree-card {
+    display: flex;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    align-items: flex-start;
+    width: 100%;
+    gap: 15px; /* Espacio más reducido entre imagen y texto */
+}
+
+/* Imagen */
+.image-wrapper {
+    padding: 10px; /* Añadiendo un relleno alrededor de la imagen */
+}
+
+.bordered-image {
+    width: 130px; /* Imagen un poco más pequeña */
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.bordered-image:hover {
+    transform: scale(1.05);
+}
+
+/* Texto */
+.text-wrapper {
+    max-width: 400px; /* Reducido para que el texto esté más compacto */
+    text-align: justify;
+}
+
+.description {
+    font-size: 1em;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Pie de imagen */
+.caption {
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 10px;
+    text-align: left;
+}
+/*Estilos generales
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #121F38;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}*/
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Contenedor del portafolio */
+.portfolio-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Cada ítem del portafolio */
+/* Contenedor general del portafolio */
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas en cada fila */
+    grid-gap: 20px; /* Espacio entre los cuadros */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenedor */
+}
+
+/* Cada ítem del portafolio */
+/* Cada ítem del portafolio */
+.portfolio-item {
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    width: 100%;
+    max-width: 285px; /* Limita el ancho del cuadro */
+    z-index: 1; /* Asegura que cada ítem esté sobre los demás */
+}
+
+.portfolio-item:hover {
+    z-index: 10; /* Aumenta el z-index al hacer hover para que quede sobre los demás */
+}
+
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas en cada fila */
+    grid-gap: 20px; /* Espacio entre los cuadros */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenedor */
+    overflow: visible; /* Asegura que los elementos hijos no se recorten */
+}
+
+
+/* Imagen dentro del portafolio */
+.portfolio-image {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Altura fija de las imágenes */
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto hover */
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.05);
+}
+
+.portfolio-info {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: max-height 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.portfolio-item:hover .portfolio-info {
+    max-height: 400px; /* Ajuste del tamaño al mostrar */
+    opacity: 1;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.portfolio-info h3 {
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 1.4em;
+    color: #121F38;
+}
+
+.portfolio-info p {
+    font-size: 1em;
+    color: #555;
+    text-align: justify;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .portfolio-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+    }
+}
+
+@media (max-width: 576px) {
+    .portfolio-container {
+        grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+    }
+}
+
+
+/* Estilos del pie de página */
+footer, .container-fluid.bg-dark {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    background-color: #121F38;
+    color: white;
+    text-align: center;
+}
+
+.btn-lg-square i {
+    font-size: 24px;
+}
+
+.container-fluid.bg-dark {
+    margin-top: 90px;
+    padding: 0;
+}
+
+ 
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="51">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader"></div>
+        <img src="img/logoIntro.png" alt="logo" class="image" style="width: 210px; height: auto;">
+    </div>
+
+    <!-- Navbar Start -->
+    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark px-lg-5">
+        <a href="index.html" class="navbar-brand d-block d-lg-none">
+            <h1 class="font-secondary text-white mb-n2">Acsa Gómez</h1>
+        </a>
+        <div class="collapse navbar-collapse justify-content-between">
+            <div class="navbar-nav ml-auto">
+                <a href="#home" class="nav-item nav-link active">Inicio</a>
+                <a href="#about" class="nav-item nav-link">Acerca de mí</a>
+                <a href="#formacion" class="nav-item nav-link">Formación</a>
+                <a href="#logros" class="nav-item nav-link">Logros</a>
+            </div>
+
+            <div class="navbar-brand mx-auto d-none d-lg-block text-center">
+                <img src="img/logo.png" alt="logo" style="height: 70px;">
+            </div>
+
+            <div class="navbar-nav mr-auto">
+                <a href="#volun" class="nav-item nav-link">Voluntariado</a>
+                <a href="#porta" class="nav-item nav-link">Mi Portafolio</a>
+                <a href="#contact" class="nav-item nav-link">Contacto</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <div class="container-fluid p-0 mb-5 pb-5" id="home">
+        <div class="carousel-inner">
+            <div class="carousel-item position-relative active" style="height: 100vh; min-height: 400px;">
+                <img class="position-absolute" src="img/home.png" style="object-fit: cover; right: 700px; top: -240px; width: 50%;">
+                <div class="carousel-caption d-flex flex-column align-items-end justify-content-center">
+                    <div class="p-3" style="max-width: 750px; text-align: justify;">
+                        <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">Acsa Gómez</h1>
+                        <div class="d-inline-block border-top border-bottom border-light py-3 px-4" style="font-size: 18px; line-height: 1.5;">
+                            <h3 class="text-uppercase font-weight-normal text-white m-0" style="letter-spacing: 2px; font-size: 18px;">
+                                Alumna, próxima a completar mis estudios de bachillerato, apasionada por los idiomas, la aviación y el turismo.
+                                 Mientras desarrollo mis habilidades en inglés e informática, persigo mi sueño de ser tripulante de cabina aérea y estudiar una carrera en turismo. Me considero una persona positiva, empática y enfocada en alcanzar mis metas.
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para ocultar el preloader -->
+    <script>
+        // Script para ocultar el preloader después de un tiempo
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden'; // Asegura que el preloader se oculte
+            }, 1000); // Tiempo de espera antes de ocultar el preloader
+        });
+    </script>
+
+    <!-- Información inicio-->
+    <div class="container-fluid py-5" id="about">
+        <div class="container py-5">
+            <div class="section-title position-relative text-center">
+                <h1 class="font-secondary display-4">Acerca de mí</h1>
+                <i class="far fa-star text-dark"></i>
+            </div>
+            <div class="row m-0 mb-4 mb-md-0 pb-2 pb-md-0">
+                <!-- Columna para el texto -->
+                <div class="col-md-6 p-0 text-center text-md-right">
+                    <div class="h-100 d-flex flex-column justify-content-center bg-celeste p-4"> <!-- Reducción de padding -->
+                        <h3 class="mb-1">Soy Acsa</h3><br><br>
+                        <p style="text-align: justify;">
+                            Nací en El Salvador, donde he crecido rodeada de gratos recuerdos. Dios y mis padres son la base fundamental 
+                            en mi vida, dándome apoyo incondicional para cumplir mis metas y sueños. Programas como ¡Supérate! fueron un
+                            sueño hecho realidad para mí, demostrando que con esfuerzo los sueños se pueden cumplir, y eso me impulsa
+                            a seguir adelante hasta lograr mi mayor meta “convertirme en TCP”. <br> <br><br>
+                            Estoy por graduarme de bachillerato y planeo estudiar turismo en la universidad. Mi pasión por este campo
+                            y mi sueño de ser tripulante de cabina aérea me motivan a conectar con distintas culturas. Me encanta
+                            conocer personas con historias diversas, disfrutar de nuevos idiomas y aprender de cada experiencia vivida.
+                        </p>
+                        <a href="img/cvacsa.pdf" target="_blank" class="btn-1">Ver mi CV</a> <!-- Botón dentro del cuadro -->
+                    </div>
+                </div>
+                <!-- Columna para la imagen -->
+                <div class="col-md-6 p-0 d-flex flex-column" style="height: 100%; position: relative;">
+                    <img class="img-fluid" src="img/sobremi.jpg" alt="Acsa Gómez" style="width: 980px; height: auto;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Sección de formación -->
+    <div class="container-fluid py-5" id="formacion">
+        <div class="container py-5">
+            <div class="section-title position-relative text-center">
+                <h1 class="font-secondary display-4">Formación</h1>
+                <i class="far fa-star text-dark"></i>
+            </div>
+            <div class="row">
+                <!-- Tarjeta de formación -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 rounded shadow-sm">
+                        <img src="img/forma1.jpg" alt="Formación 1" class="img-timeline card-img-top" onclick="openModal(this.src)">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2023 - 2024</h5>
+                            <p class="card-text">Bachillerato general, en Instituto Nacional Joaquin Ernesto Cardenas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna de Formación 2 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 rounded shadow-sm">
+                        <img src="img/HTML.jpeg" alt="Formación 2" class="img-timeline card-img-top" onclick="openModal(this.src)">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2023</h5>
+                            <p class="card-text">
+                                • Udemy curso en línea de programación, por parte de Supérate.<br>
+                                • Curso en línea de introducción a JavaScript en Sololearn.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna de Formación 3 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 rounded shadow-sm">
+                        <img src="img/forma3.jpg" alt="Formación 3" class="img-timeline card-img-top" onclick="openModal(this.src)">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2022</h5>
+                            <p class="card-text">Inicie mis estudios en el Centro Supérate Grupo Q, un programa que eleva el nivel educativo de los jóvenes con potencial y deseos de superación personal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna de Formación 4 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 rounded shadow-sm">
+                        <img src="img/forma4.jpg" alt="Formación 4" class="img-timeline card-img-top" onclick="openModal(this.src)">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2021 - 2022</h5>
+                            <p class="card-text">Realicé mis estudios de tercer ciclo en el Complejo Educativo Católico El Espíritu Santo cursando 8° y 9° grado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna de Formación 5 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 rounded shadow-sm">
+                        <img src="img/forma5.jpg" alt="Formación 5" class="img-timeline card-img-top" onclick="openModal(this.src)">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2019 - 2020</h5>
+                            <p class="card-text">Curse mis estudios de educación básica (6° y 7° grado) en el Complejo Educativo Confederación Suiza.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna de Formación 6 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 rounded shadow-sm">
+                        <img src="img/forma6.jpeg" alt="Formación 6" class="img-timeline card-img-top" onclick="openModal(this.src)">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2018</h5>
+                            <p class="card-text">Estuve en entrenos de softball en el estadio Félix Charlaix, todos los sábados.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna de Formación 7 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 rounded shadow-sm">
+                        <img src="img/forma7.jpg" alt="Formación 7" class="img-timeline card-img-top" onclick="openModal(this.src)">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2014 - 2018</h5>
+                            <p class="card-text">Realicé mis estudios de básica desde 1° a 5° grado en el Complejo Educativo Católico El Espíritu Santo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna de Formación 8 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card border-0 rounded shadow-sm">
+                        <img src="img/forma8.JPG" alt="Formación 8" class="img-timeline card-img-top" onclick="openModal(this.src)">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">2012 - 2013</h5>
+                            <p class="card-text">Realicé mis primeros años de estudio en la Escuela de Educación Parvularia Profra. Graciela Flores Viuda de Grimaldi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para la imagen -->
+        <div id="imageModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img id="modalImage" src="" alt="Imagen ampliada">
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script>
+            function openModal(src) {
+                document.getElementById("modalImage").src = src;
+                document.getElementById("imageModal").style.display = "flex";
+            }
+
+            function closeModal() {
+                document.getElementById("imageModal").style.display = "none";
+            }
+        </script>
+
+        <!-- Script para Bootstrap y jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </div>
+
+    <!-- Formacion End -->
+
+     <!-- logros Start -->
+     <div class="container-fluid py-5" id="logros">
+        <div class="container py-5">
+            <div class="section-title position-relative text-center">
+                <h1 class="font-secondary display-4">Logros Académicos</h1>
+                <i class="far fa-star text-dark"></i>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <!-- Primera Columna -->
+                    <div class="row">
+                        <div class="col-md-6 d-flex flex-column align-items-center p-4 bg-light rounded shadow-sm mb-4 position-relative border-effect">
+                            <div class="text-center mb-4">
+                                <img class="img-fluid rounded mb-3 bordered-image" src="img/acsa.jpg" alt="Desde que era pequeña, mi objetivo ha sido ingresar a Supérate" style="width: auto; height: 190px;">
+                            </div>
+                            <p class="text-justify mb-2 text-content">
+                                Desde que era pequeña, mi objetivo ha sido ingresar a Supérate, y el día en que me otorgaron la beca y la oportunidad de formar parte del programa fue un logro significativo que cumplió mi sueño.
+                            </p>
+                        </div>
+                    
+                        <div class="col-md-6 d-flex flex-column align-items-center p-4 bg-light rounded shadow-sm mb-4 position-relative border-effect">
+                            <div class="text-center mb-4">
+                                <img class="img-fluid rounded mb-3 bordered-image" src="img/mos.jpg" alt="Alcancé una destacada puntuación de 960 en la certificación de informática MOS Excel" style="width: auto; height: 190px;">
+                                <br><br><p class="text-justify mb-2 text-content">Alcancé una destacada puntuación de 960 en la certificación de informática MOS Excel.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 d-flex flex-column align-items-center p-4 bg-light rounded shadow-sm mb-4 position-relative border-effect">
+                            <div class="text-center mb-4">
+                                <img class="img-fluid rounded mb-3 bordered-image" src="img/its.jpg" alt="Obtuve una excelente puntuación de 920 en la certificación ITS en el lenguaje de programación JavaScript" style="width: auto; height: 180px;">
+                            </div>
+                            <p class="text-justify mb-2 text-content">
+                                Obtuve una excelente puntuación de 920 en la certificación ITS en el lenguaje de programación JavaScript.
+                            </p>
+                        </div>
+                    
+                        <div class="col-md-6 d-flex flex-column align-items-center p-4 bg-light rounded shadow-sm mb-4 position-relative border-effect">
+                            <div class="text-center mb-4">
+                                <img class="img-fluid rounded mb-3 bordered-image" src="img/grad.jpg" alt="Graduación de 9° grado de mi centro escolar" style="width: auto; height: 190px;">
+                                <p class="text-justify mb-2 text-content">Graduación de 9° grado de mi centro escolar.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Modal para la imagen -->
+                    <div class="image-modal" id="imageModal">
+                        <span class="close" id="closeModal">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div id="caption"></div>
+                    </div>
+                    
+                    <script>
+                        // Obtener el modal
+                        var modal = document.getElementById("imageModal");
+                        var modalImg = document.getElementById("modalImage");
+                        var captionText = document.getElementById("caption");
+                    
+                        // Obtener todas las imágenes
+                        var images = document.getElementsByClassName("bordered-image");
+                        for (var i = 0; i < images.length; i++) {
+                            images[i].onclick = function() {
+                                modal.style.display = "flex"; // Cambiado a flex para centrar el contenido
+                                modalImg.src = this.src;
+                                captionText.innerHTML = this.alt; // Captura la descripción de la imagen
+                            }
+                        }
+                    
+                        // Cerrar el modal
+                        document.getElementById("closeModal").onclick = function() {
+                            modal.style.display = "none";
+                        }
+                    </script>
+                    
+    <!-- logros End -->
+
+<!--voluntariados-->
+<div class="container-fluid py-5" id="volun">
+    <div class="container py-5">
+        <div class="section-title position-relative text-center">
+            <h1 class="font-secondary display-4">Voluntariado</h1>
+            <i class="far fa-star text-dark"></i>
+        </div>
+
+        <div class="adopt-a-tree-container">
+            <div class="adopt-a-tree-card">
+                <div class="image-wrapper">
+                    <img class="img-fluid rounded bordered-image" src="img/arbol.jpg" alt="Stormy, el árbol adoptado" />
+                    <p class="caption">Stormy 3 meses después de su adopción.</p>
+                </div>
+                <div class="text-wrapper">
+                    <br><br><p class="description">
+                        En 2024, adopté un pequeño árbol al que he nombrado 'Stormy'. A través del programa Súperate, se brindó la oportunidad de adoptar un árbol y ofrecerle los cuidados necesarios, como regarlo y abonarlo, con el objetivo de contribuir al cuidado del medio ambiente y crear conciencia sobre la importancia de preservar nuestra flora.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--voluntaiados end-->
+<!--Portafolio start-->
+<div class="container-fluid py-5" id="porta">
+    <div class="container py-5">
+        <div class="section-title position-relative text-center">
+            <h1 class="font-secondary display-4">Mi Portafolio</h1>
+            <i class="far fa-star text-dark"></i>
+        </div>
+        <div class="portfolio-container" id="proyectos">
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="img/expo.jpg" alt="Proyecto Feria de Logros">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Proyecto Feria de Logros</h3>
+                    <p>Participé en un evento del programa Súperate, presentando juegos educativos como "PronSnake".</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="img/tech.jpg" alt="Proyecto ExpoTech 2024">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Proyecto ExpoTech 2024</h3>
+                    <p>Presenté "USkills", una aplicación que ayuda a estudiantes a identificar habilidades y opciones educativas.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="img/rubio.jpg" alt="Jóvenes Geoespaciales">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Jóvenes Geoespaciales</h3>
+                    <p>Tuve la oportunidad de conocer al astronauta Frank Rubio, lo que inspiró mi interés por la aviación.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="img/HTML.jpeg" alt="Curso HTML">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Curso HTML</h3>
+                    <p>Diploma de finalización del curso de HTML en Sololearn.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="img/CSS.jpeg" alt="Curso CSS">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Curso CSS</h3>
+                    <p>Diploma de finalización del curso de CSS en Sololearn.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="img/javas.jpeg" alt="Curso JavaScript">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Curso JavaScript</h3>
+                    <p>Diploma de finalización del curso de JavaScript en Sololearn.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="img/udemy1.jpg" alt="Curso Udemy">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Curso Udemy</h3>
+                    <p>Primer diploma de finalización de un curso de programación en Udemy.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="img/udemy2.jpg" alt="Curso Udemy">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Curso Udemy</h3>
+                    <p>Segundo diploma de finalización de un curso de programación en Udemy.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="img/udemy3.jpg" alt="Curso Udemy">
+                </div>
+                <div class="portfolio-info">
+                    <h3>Curso Udemy</h3>
+                    <p>Tercer diploma de finalización de un curso de fundamentos de programación en Udemy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Portafolio end-->
+
+   
+
+
+    <!-- Contacto Start -->     
+<div class="container-fluid bg-dark text-white py-5" id="contact" style="margin-top: 90px; position: relative; bottom: 0; width: 100%;">
+    <div class="container text-center py-5">
+        <div class="section-title position-relative text-center">
+            <h1 class="font-secondary display-3 text-white">Contacto</h1>
+            <i class="far fa-star text-white"></i>
+        </div>
+        <div class="d-flex justify-content-center mb-4">
+            <!-- Cambia los enlaces por tus URLs de perfil -->
+            <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://www.facebook.com/TU_NOMBRE_USUARIO" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-lg btn-outline-light btn-lg-square" href="https://www.instagram.com/TU_NOMBRE_USUARIO" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="d-flex justify-content-center py-2">
+            <p class="text-white">beatrizpenagomez21@gmail.com</p>
+            <span class="px-3">|</span>
+            <p class="text-white">+503 7226 7861</p>
+        </div>
+        <p class="m-0">&copy; <a class="text-primary" href="#">2024 Todos los derechos reservados</a>. Diseñado por <a>Acsa Gómez</a>
+        </p>
+    </div>
+</div></div>
+
+    <!-- Contacto End -->
+
+
+    <!-- Scroll to Bottom -->
+    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-outline-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
